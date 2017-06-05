@@ -7,8 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "tjbot":"1.3.0"
+    "tjbot": "1.3.0"
   },
   "author": "JeanCarl Bisson <jbisson@us.ibm.com> (http://jeancarlbisson.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeancarl/node-red-contrib-tjbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jeancarl/node-red-contrib-tjbot/issues"
+  },
+  "homepage": "https://github.com/jeancarl/node-red-contrib-tjbot#readme"
 }
