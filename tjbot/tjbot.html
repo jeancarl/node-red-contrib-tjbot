@@ -24,7 +24,9 @@
     category: "config",
     defaults: {
       botGender: {value: "male"},
-      name: {value: ""}
+      name: {value: ""},
+      listen: {value: ""},
+      speak: {value: ""}
     },
     credentials: {
       taUsername: {type:"text"},
@@ -34,6 +36,10 @@
       cWorkspaceId: {type:"text"},
       ltUsername: {type:"text"},
       ltPassword: {type:"password"},
+      ttsUsername: {type:"text"},
+      ttsPassword: {type:"password"},
+      sttUsername: {type:"text"},
+      sttPassword: {type:"password"},
       vrApiKey: {type:"password"}
     },
     label: function() {
@@ -75,11 +81,29 @@
     }
   });
 
+  RED.nodes.registerType("tjbot-listen",{
+    category: "TJBot",
+    color: "#D2B48C",
+    defaults: {
+      botId: {type: "tjbot-config"},
+      name: {value: ""}
+    },
+    inputs: 1,
+    outputs: 1,
+    paletteLabel: "listen",
+    icon: "speech_to_text.png",
+    align: "left",
+    label: function() {
+      return this.name||"Listen";
+    }
+  });
+
   RED.nodes.registerType("tjbot-see",{
     category: "TJBot",
     color: "#D2B48C",
     defaults: {
       botId: {type: "tjbot-config"},
+      mode: {value: ""},
       name: {value: ""}
     },
     inputs: 1,
@@ -109,7 +133,7 @@
     }
   });
 
-  RED.nodes.registerType("tjbot-takephoto",{
+  RED.nodes.registerType("tjbot-speak",{
     category: "TJBot",
     color: "#D2B48C",
     defaults: {
@@ -117,12 +141,12 @@
       name: {value: ""}
     },
     inputs: 1,
-    outputs:1,
-    paletteLabel: "take photo",
-    icon: "camera.png",
+    outputs: 1,
+    paletteLabel: "speak",
+    icon: "text_to_speech.png",
     align: "left",
     label: function() {
-      return this.name||"Take Photo";
+      return this.name||"Speak";
     }
   });
 
@@ -150,6 +174,7 @@
     color: "#D2B48C",
     defaults: {
       botId: {type: "tjbot-config"},
+      motion: {value:"wave"},
       name: {value: ""}
     },
     inputs: 1,
@@ -168,6 +193,34 @@
     <select id="node-config-input-botGender">
       <option value="male">Male</option>
       <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-speak"><i class="fa fa-language"></i> Speak:</label>
+    <select id="node-config-input-speak">
+      <option value="en-GB">English (British dialect)</option>
+      <option value="en-US">English (US dialect)</option>
+      <option value="fr-FR">French</option>
+      <option value="de-DE">German</option>
+      <option value="it-IT">Italian</option>
+      <option value="ja-JP">Japanese</option>
+      <option value="pt-BR">Brazilian Portuguese</option>
+      <option value="es-ES">Spanish (Castilian dialect)</option>
+      <option value="es-LA">Spanish (Latin American dialect)</option>
+      <option value="es-US">Spanish (North American dialect)</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-listen"><i class="fa fa-language"></i> Listen:</label>
+    <select id="node-config-input-listen">
+      <option value="ar-AR">Modern Standard Arabic</option>
+      <option value="zh-CN">Mandarin Chinese</option>
+      <option value="en-UK">UK English</option>
+      <option value="en-US">US English</option>
+      <option value="fr-FR">French</option>
+      <option value="ja-JP">Japanese</option>
+      <option value="pt-BR">Brazilian Portuguese</option>
+      <option value="es-ES">Spanish</option>
     </select>
   </div>
   <div class="form-row">
@@ -212,6 +265,28 @@
     <input type="password" id="node-config-input-ltPassword" placeholder="Language Translator Password">
   </div>
   <div class="form-row">
+    <b>Text to Speech</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ttsUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-ttsUsername" placeholder="Text to Speech Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ttsPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-ttsPassword" placeholder="Text to Speech Password">
+  </div>
+  <div class="form-row">
+    <b>Speech to Text</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-sttUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-sttUsername" placeholder="Speech to Text Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-sttPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-sttPassword" placeholder="Speech to Text Password">
+  </div>
+  <div class="form-row">
     <b>Visual Recognition</b>
   </div>
   <div class="form-row">
@@ -227,6 +302,15 @@
     </select>
   </div>
   <div class="form-row">
+    <label for="node-input-motion"><i class="fa fa-user"></i> Motion:</label>
+    <select id="node-input-motion">
+      <option value="wave">Wave</option>
+      <option value="armback">Arm Back</option>
+      <option value="lowerarm">Lower Arm</option>
+      <option value="raisearm">Raise Arm</option>
+    </select>
+  </div>
+  <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
   </div>
@@ -234,6 +318,13 @@
 
 <script type="text/x-red" data-help-name="tjbot-wave">
   <p>Make TJ Bot wave</p>
+  <p>Set the motion using <b>msg.motion</b> (case insensitive):</p>
+  <ul>
+    <li>wave - Wave</li>
+    <li>armback - Arm Back</li>
+    <li>raisearm - Raise Arm</li>
+    <li>lowerarm - Lower Arm</li>
+  </ul>
   <p><b>Note:</b> This node requires that a servo is connected to the TJ Bot.</p>
 </script>
 
@@ -546,6 +637,14 @@
     </select>
   </div>
   <div class="form-row">
+    <label for="node-input-mode"><i class="fa fa-user"></i> Mode:</label>
+    <select id="node-input-mode">
+      <option value="read">Read (identify text)</option>
+      <option value="see">See (identify objects)</option>
+      <option value="takephoto">Take Photo</option>
+    </select>
+  </div>
+  <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
   </div>
@@ -554,10 +653,16 @@
 <script type="text/x-red" data-help-name="tjbot-see">
   <p>Make TJ Bot recognize objects</p>
   <p>The service response will be returned on <b>msg.payload</b>.</p>
+  <p>Programmatically set mode via <b>msg.mode</b> (case-insensitive):</p>
+  <ul>
+    <li>read - returns a list of text strings read by TJBot</li>
+    <li>see - returns a list of objects seen and their confidences</li>
+    <li>takephoto - returns the path to the image on <b>msg.payload</b></li>
+  </ul>
   <p><b>Note:</b> This node requires that the Watson Visual Recognition API Key is set in the TJ Bot configuration and a camera attached to the Raspberry Pi.</p>
 </script>
 
-<script type="text/x-red" data-template-name="tjbot-takephoto">
+<script type="text/x-red" data-template-name="tjbot-listen">
   <div class="form-row">
     <label for="node-input-botId"><i class="fa fa-user"></i> Bot:</label>
     <select id="node-input-botId">
@@ -569,8 +674,34 @@
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="tjbot-takephoto">
-  <p>Make TJ Bot take a photo</p>
-  <p>The image will be returned on <b>msg.payload</b> as a Buffer object.</p>
-  <p><b>Note:</b> This node requires a camera attached to the Raspberry Pi.</p>
+<script type="text/x-red" data-help-name="tjbot-listen">
+  <p>Make TJ Bot listen</p>
+  <p>The text will be returned on <b>msg.payload</b>.</p>
+  <p>To begin listening set <b>msg.mode</b> to:</p>
+  <ul>
+    <li><code>start</code> - start listening</li>
+    <li><code>resume</code> - resume listening</li>
+    <li><code>pause</code> - pause listening</li>
+    <li><code>stop</code> - stop listening</li>
+  </ul>
+  <p><b>Note:</b> This node requires a microphone attached to the Raspberry Pi. Also, if one bot contains multiple listening nodes, each will start/stop/pause/resume just their own node.</p>
+</script>
+
+<script type="text/x-red" data-template-name="tjbot-speak">
+  <div class="form-row">
+    <label for="node-input-botId"><i class="fa fa-user"></i> Bot:</label>
+    <select id="node-input-botId">
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tjbot-speak">
+  <p>Make TJ Bot Speak</p>
+  <p>Set the text to be spoken on <b>msg.payload</b>.</p>
+  <p>Node will output the same message on completion of speech.</p>
+  <p><b>Note:</b> This node requires a speaker attached to the Raspberry Pi.</p>
 </script>
