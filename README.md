@@ -20,7 +20,9 @@ Nodes include:
 
 ```
 cd nodes
-npm install node-red-contrib-tjbot
+git clone https://github.com/jeancarl/node-red-contrib-tjbot
+cd node-red-contrib-tjbot
+npm install
 sudo node-red
 ```
 
