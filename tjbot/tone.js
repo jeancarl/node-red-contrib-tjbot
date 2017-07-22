@@ -24,9 +24,10 @@ module.exports = function(RED) {
   function TJBotNodeAnalyzeTone(config) {
     RED.nodes.createNode(this, config);
     var node = this;
-    var mode = msg.mode||config.tones;
 
     node.on("input", function(msg) {
+      var mode = msg.mode||config.tones;
+      
       tj.bots[config.botId].analyzeTone(msg.payload).then(function(response) {
         switch(mode.toLowerCase()) {
           case "emotion":
