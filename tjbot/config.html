@@ -1,0 +1,157 @@
+<!--
+#***************************************************************************
+# Copyright 2017 IBM
+#
+#   TJBot Nodes for Node-RED
+#
+#   By JeanCarl Bisson (@dothewww)
+#   More info: https://ibm.biz/node-red-contrib-tjbot
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#***************************************************************************
+-->
+<script type="text/javascript">
+  RED.nodes.registerType("tjbot-config",{
+    category: "config",
+    defaults: {
+      botGender: {value: "male"},
+      name: {value: ""},
+      listen: {value: ""},
+      speak: {value: ""}
+    },
+    credentials: {
+      taUsername: {type:"text"},
+      taPassword: {type:"password"},
+      cUsername: {type:"text"},
+      cPassword: {type:"password"},
+      cWorkspaceId: {type:"text"},
+      ltUsername: {type:"text"},
+      ltPassword: {type:"password"},
+      ttsUsername: {type:"text"},
+      ttsPassword: {type:"password"},
+      sttUsername: {type:"text"},
+      sttPassword: {type:"password"},
+      vrApiKey: {type:"password"}
+    },
+    label: function() {
+      return this.botName||this.name||"TJBot";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="tjbot-config">
+  <div class="form-row">
+    <label for="node-config-input-botGender"><i class="fa fa-user"></i> Gender:</label>
+    <select id="node-config-input-botGender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-speak"><i class="fa fa-language"></i> Speak:</label>
+    <select id="node-config-input-speak">
+      <option value="en-GB">English (British dialect)</option>
+      <option value="en-US">English (US dialect)</option>
+      <option value="fr-FR">French</option>
+      <option value="de-DE">German</option>
+      <option value="it-IT">Italian</option>
+      <option value="ja-JP">Japanese</option>
+      <option value="pt-BR">Brazilian Portuguese</option>
+      <option value="es-ES">Spanish (Castilian dialect)</option>
+      <option value="es-LA">Spanish (Latin American dialect)</option>
+      <option value="es-US">Spanish (North American dialect)</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-listen"><i class="fa fa-language"></i> Listen:</label>
+    <select id="node-config-input-listen">
+      <option value="ar-AR">Modern Standard Arabic</option>
+      <option value="zh-CN">Mandarin Chinese</option>
+      <option value="en-UK">UK English</option>
+      <option value="en-US">US English</option>
+      <option value="fr-FR">French</option>
+      <option value="ja-JP">Japanese</option>
+      <option value="pt-BR">Brazilian Portuguese</option>
+      <option value="es-ES">Spanish</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <b>Tone Analyzer</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-taUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-taUsername" placeholder="Tone Analyzer Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-taPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-taPassword" placeholder="Tone Analyzer Password">
+  </div>
+  <div class="form-row">
+    <b>Conversation</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-cUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-cUsername" placeholder="Conversation Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-cPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-cPassword" placeholder="Conversation Password">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-cWorkspaceId"><i class="fa fa-tag"></i> Workspace ID:</label>
+    <input type="text" id="node-config-input-cWorkspaceId" placeholder="Conversation Workspace ID">
+  </div>
+  <div class="form-row">
+    <b>Language Translator</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ltUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-ltUsername" placeholder="Language Translator Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ltPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-ltPassword" placeholder="Language Translator Password">
+  </div>
+  <div class="form-row">
+    <b>Text to Speech</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ttsUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-ttsUsername" placeholder="Text to Speech Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ttsPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-ttsPassword" placeholder="Text to Speech Password">
+  </div>
+  <div class="form-row">
+    <b>Speech to Text</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-sttUsername"><i class="fa fa-user"></i> Username:</label>
+    <input type="text" id="node-config-input-sttUsername" placeholder="Speech to Text Username">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-sttPassword"><i class="fa fa-key"></i> Password:</label>
+    <input type="password" id="node-config-input-sttPassword" placeholder="Speech to Text Password">
+  </div>
+  <div class="form-row">
+    <b>Visual Recognition</b>
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-vrApiKey"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key">
+  </div>
+</script>

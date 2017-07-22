@@ -1,0 +1,130 @@
+<!--
+#***************************************************************************
+# Copyright 2017 IBM
+#
+#   TJBot Nodes for Node-RED
+#
+#   By JeanCarl Bisson (@dothewww)
+#   More info: https://ibm.biz/node-red-contrib-tjbot
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#***************************************************************************
+-->
+<script type="text/javascript">
+  RED.nodes.registerType("tjbot-translate",{
+    category: "TJBot",
+    color: "#D2B48C",
+    defaults: {
+      botId: {type: "tjbot-config"},
+      srcLang: {value: ""},
+      targetLang: {value: ""},
+      mode: {value: "translate"},
+      name: {value: ""}
+    },
+    inputs: 1,
+    outputs:1,
+    oneditprepare: function() {
+      $("#node-input-mode").on("change", function() {
+        if($('#node-input-mode').val() == "identifyLanguage") {
+          $("#srcLang, #targetLang").hide();
+        } else {
+          $("#srcLang, #targetLang").show();
+        }
+      });
+    },
+    paletteLabel: "translate",
+    icon: "translate.png",
+    align: "left",
+    label: function() {
+      return this.name||"Translate";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="tjbot-translate">
+  <div class="form-row">
+    <label for="node-input-botId"><i class="fa fa-user"></i> Bot:</label>
+    <select id="node-input-botId">
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-mode"><i class="fa fa-gear"></i> Mode:</label>
+    <select id="node-input-mode">
+      <option value="translate">Translate</option>
+      <option value="identifyLanguage">Identify Language</option>
+      <option value="isTranslatable">Is Translatable</option>
+      <option value="msg.mode">-- set msg.mode --</option>
+    </select>
+  </div>
+  <div class="form-row" id="srcLang">
+    <label for="node-input-srcLang"><i class="fa fa-comments-o"></i> From:</label>
+    <select id="node-input-srcLang">
+      <option value="ar">Arabic</option>
+      <option value="zh">Chinese</option>
+      <option value="de">German</option>
+      <option value="en">English</option>
+      <option value="fr">French</option>
+      <option value="it">Italian</option>
+      <option value="ja">Japanese</option>
+      <option value="ko">Korean</option>
+      <option value="es">Spanish</option>
+      <option value="pt">Portuguese</option>
+      <option value="msg.srcLang">-- set msg.srcLang --</option>
+    </select>
+  </div>
+  <div class="form-row" id="targetLang">
+    <label for="node-input-targetLang"><i class="fa fa-comments-o"></i> To:</label>
+    <select id="node-input-targetLang">
+      <option value="ar">Arabic</option>
+      <option value="zh">Chinese</option>
+      <option value="de">German</option>
+      <option value="en">English</option>
+      <option value="fr">French</option>
+      <option value="it">Italian</option>
+      <option value="ja">Japanese</option>
+      <option value="ko">Korean</option>
+      <option value="es">Spanish</option>
+      <option value="pt">Portuguese</option>
+      <option value="msg.targetLang">-- set msg.targetLang --</option>
+    </select>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tjbot-translate">
+  <p>Make TJBot translate text</p>
+  <p>Set <b>msg.mode</b> to <i>translate</i>, <i>identifyLanguage</i>, or <i>isTranslatable</i> (case-insensitive).</p>
+  <p>The text to be translated/identified should be passed in on <b>msg.payload</b>.</p>
+  <p>Set the source language and target language on <b>msg.srcLang</b> and <b>msg.targetLang</b>, respectively:</p>
+  <ul>
+    <li><i>ar</i> - Arabic</li>
+    <li><i>zh</i> - Chinese</li>
+    <li><i>de</i> - German</li>
+    <li><i>en</i> - English</li>
+    <li><i>fr</i> - French</li>
+    <li><i>it</i> - Italian</li>
+    <li><i>ja</i> - Japanese</li>
+    <li><i>ko</i> - Korean</li>
+    <li><i>es</i> - Spanish</li>
+    <li><i>pt</i> - Portuguese</li>
+  </ul>
+  <p>The service response will be returned on <b>msg.response</b>. <b>msg.response</b> will be:</p>
+  <ul>
+    <li>the translation, if mode is <i>translate</i></li>
+    <li>a boolean, if mode is <i>isTranslatable</i></li>
+    <li>the confidence scores for the available languages, if mode is <i>identifyLanguage</i></li>
+  </ul>
+  <p><b>Note:</b> This node requires that the Watson Language Translator credentials are set in the TJBot configuration.</p>
+</script>

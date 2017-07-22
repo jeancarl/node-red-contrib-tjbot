@@ -18,11 +18,32 @@
 *   See the License for the specific language governing permissions and
 ****************************************************************************/
 
-var fs = require("fs");
+var tj = require("./tjbot.js");
 
-var TJs = {
-  bots: {},
-  listeners: {}
+module.exports = function(RED) {
+  function TJBotNodeWave(config) {
+    RED.nodes.createNode(this, config);
+    var node = this;
+
+    node.on("input", function(msg) {
+      var motion = msg.motion||config.motion;
+
+      switch(motion.toLowerCase()) {
+        case "armback":
+          tj.bots[config.botId].armBack();
+        break;
+        case "lowerarm":
+          tj.bots[config.botId].lowerArm();
+        break;
+        case "raisearm":
+          tj.bots[config.botId].raiseArm();
+        break;
+        case "wave":
+          tj.bots[config.botId].wave();
+        break;
+      }
+
+    });
+  }
+  RED.nodes.registerType("tjbot-wave", TJBotNodeWave);
 }
-
-module.exports = TJs;

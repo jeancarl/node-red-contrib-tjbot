@@ -18,11 +18,25 @@
 *   See the License for the specific language governing permissions and
 ****************************************************************************/
 
-var fs = require("fs");
+var tj = require("./tjbot.js");
 
-var TJs = {
-  bots: {},
-  listeners: {}
+module.exports = function(RED) {
+  function TJBotNodeConverse(config) {
+    RED.nodes.createNode(this, config);
+    var node = this;
+
+    node.on("input", function(msg) {
+      var bot = RED.nodes.getNode(config.botId);
+      var workspaceId = bot.services.conversation.workspaceId;
+      var payload = msg.payload;
+
+      tj.bots[config.botId].converse(workspaceId, payload, function(response) {
+        msg.response = response;
+        node.send(msg);
+      }, function(error) {
+        node.error(error);
+      });
+    });
+  }
+  RED.nodes.registerType("tjbot-converse", TJBotNodeConverse);
 }
-
-module.exports = TJs;

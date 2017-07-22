@@ -18,11 +18,34 @@
 *   See the License for the specific language governing permissions and
 ****************************************************************************/
 
-var fs = require("fs");
+var tj = require("./tjbot.js");
 
-var TJs = {
-  bots: {},
-  listeners: {}
+module.exports = function(RED) {
+  function TJBotNodeShine(config) {
+    RED.nodes.createNode(this, config);
+    var node = this;
+
+    tj.bots[config.botId].shine("off");
+
+    node.on("input", function(msg) {
+      var color = msg.color||config.color;
+      var duration = parseFloat(msg.duration||config.duration);
+      var mode = msg.mode||config.mode;
+
+      switch(mode.toLowerCase()) {
+        case "shine":
+          if(color == "random") {
+            tj.bots[config.botId].shine(tj.bots[config.botId].randomColor());
+          } else {
+            tj.bots[config.botId].shine(color);
+          }
+        break;
+        case "pulse":
+          tj.bots[config.botId].pulse(color, duration);
+        break;
+      }
+
+    });
+  }
+  RED.nodes.registerType("tjbot-shine", TJBotNodeShine);
 }
-
-module.exports = TJs;

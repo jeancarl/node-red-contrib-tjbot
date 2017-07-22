@@ -1,0 +1,76 @@
+<!--
+#***************************************************************************
+# Copyright 2017 IBM
+#
+#   TJBot Nodes for Node-RED
+#
+#   By JeanCarl Bisson (@dothewww)
+#   More info: https://ibm.biz/node-red-contrib-tjbot
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#***************************************************************************
+-->
+<script type="text/javascript">
+  RED.nodes.registerType("tjbot-analyze-tone",{
+    category: "TJBot",
+    color: "#D2B48C",
+    defaults: {
+      botId: {type: "tjbot-config"},
+      tones: {value: "all"},
+      name: {value: ""}
+    },
+    inputs: 1,
+    outputs: 1,
+    paletteLabel: "analyze tone",
+    icon: "tone_analyzer.png",
+    align: "left",
+    label: function() {
+      return this.name||"Analyze Tone";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="tjbot-analyze-tone">
+  <div class="form-row">
+    <label for="node-input-botId"><i class="fa fa-user"></i> Bot:</label>
+    <select id="node-input-botId">
+    </select>
+  </div>
+  <div class="form-row" >
+    <label for="node-input-tones"><i class="fa fa-comments-o"></i> Tones</label>
+    <select type="text" id="node-input-tones">
+        <option value="all">All</option>
+        <option value="emotion">Emotion</option>
+        <option value="language">Language</option>
+        <option value="social">Social</option>
+        <option value="msg.mode">-- set msg.mode --</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tjbot-analyze-tone">
+  <p>Make TJBot analyze the tone</p>
+  <p>The text to analyze should be passed in on <b>msg.payload</b>.</p>
+  <p>The response can be narrowed down to one of the three categories by setting <b>msg.mode</b>:</p>
+  <ul>
+    <li><i>emotion</i> - emotions</li>
+    <li><i>language</i> - language scores</li>
+    <li><i>social</i> - social scores</li>
+    <li><i>all</i> (or not set) - all scores</li>
+  </ul>
+  <p>The service response will be returned on <b>msg.response</b>.</p>
+  <p><b>Note:</b> This node requires that the Watson Tone Analyzer credentials are set in the TJBot configuration.</p>
+</script>
