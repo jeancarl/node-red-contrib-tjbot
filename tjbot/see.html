@@ -26,17 +26,21 @@
     defaults: {
       botId: {type: "tjbot-config"},
       mode: {value: ""},
-      flipImage: {value: false},
+      verticalFlip: {value: false},
+      horizontalFlip: {value: false},
+      width: {value: 960},
+      height: {value: 720},
       name: {value: ""}
     },
     inputs: 1,
     outputs: 1,
     oneditprepare: function() {
+      $(".takeOption").hide();
       $('#node-input-mode').on("change", function() {
         if($('#node-input-mode').val() == "takephoto") {
-          $("#flipOptions").show();
+          $(".takeOption").show();
         } else {
-          $("#flipOptions").hide();
+          $(".takeOption").hide();
         }
       });
     },
@@ -64,9 +68,18 @@
       <option value="msg.mode">-- set msg.mode --</option>
     </select>
   </div>
-  <div class="form-row" id="flipOptions">
-    <label for="node-input-flipImage"><i class="fa fa-sort"></i> Flip Image:</label>
-    <input type="checkbox" id="node-input-flipImage" />
+  <div class="form-row takeOption">
+    <label><i class="fa fa-toggle-on"></i> Flip</label>
+    <input type="checkbox" id="node-input-verticalFlip" placeholder="" style="display: inline-block; width: auto; vertical-align: top;">
+    <label for="node-input-verticalFlip">Vertical</label>
+    <input type="checkbox" id="node-input-horizontalFlip" placeholder="" style="display: inline-block; width: auto; vertical-align: top;">
+    <label for="node-input-horizontalFlip">Horizontal</label>
+  </div>
+  <div class="form-row takeOption">
+    <label for="node-input-width"><i class="fa fa-expand"></i> Dimensions:</label>
+    <input type="text" id="node-input-width" placeholder="Width" style="display: inline-block; width: 60px; vertical-align: top;">
+    x
+    <input type="text" id="node-input-height" placeholder="Height" style="display: inline-block; width: 60px; vertical-align: top;">
   </div>
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
@@ -76,12 +89,53 @@
 
 <script type="text/x-red" data-help-name="tjbot-see">
   <p>Make TJBot recognize objects</p>
-  <p>The service response will be returned on <b>msg.payload</b>.</p>
-  <p>Programmatically set mode via <b>msg.mode</b> (case-insensitive):</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">height
+      <span class="property-type">number</span>
+    </dt>
+    <dd>if mode is takephoto, specify the height of the photo</dd>
+    <dt class="optional">horizontalFlip
+      <span class="property-type">boolean</span>
+    </dt>
+    <dd>if mode is takephoto, flip the photo horizontally</dd>
+    <dt class="optional">mode
+      <span class="property-type">string</span>
+    </dt>
+    <dd>either read, see, or takephoto</dd>
+    <dt class="optional">width
+      <span class="property-type">number</span>
+    </dt>
+    <dd>if mode is takephoto, specify the width of the photo</dd>
+    <dt class="optional">verticalFlip
+      <span class="property-type">boolean</span>
+    </dt>
+    <dd>if mode is takephoto, flip the photo vertically</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload <span class="property-type">object</span></dt>
+    <dd>when the mode is read, returns the text strings from the Watson Visual Recognition service.</dd>
+    <dd>when the mode is see, returns the objects and colors from the Watson Visual Recognition service.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>filename <span class="property-type">string</span></dt>
+    <dd>when the mode is takephoto, the file path to the image stored locally.</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>Programmatically set mode via <code>msg.mode</code> (case-insensitive):</p>
+  <h4>read</h4>
+  <p>This mode returns a list of text strings read by TJBot</p>
+  <h4>see</h4>
+  <p>This mode returns a list of objects and colors seen and confidence scores</p>
+  <h4>takephoto</h4>
+  <p>This mode returns the path to the image on <code>msg.filename</code>:</p>
   <ul>
-    <li><i>read</i> - returns a list of text strings read by TJBot</li>
-    <li><i>see</i> - returns a list of objects seen and their confidences</li>
-    <li><i>takephoto</i> - returns the path to the image on <b>msg.payload</b></li>
+    <li>set <code>msg.width</code> and <code>msg.height</code> to change picture size</li>
+    <li>set <code>msg.verticalFlip</code> and <code>msg.horizontalFlip</code> to flip the picture vertically and horizontally, respectively</li>
   </ul>
-  <p><b>Note:</b> This node requires that the Watson Visual Recognition API Key is set in the TJBot configuration and a camera attached to the Raspberry Pi.</p>
+  <p>Note: This node requires that the Watson Visual Recognition API Key is set in the TJBot configuration and a camera attached to the Raspberry Pi.</p>
 </script>

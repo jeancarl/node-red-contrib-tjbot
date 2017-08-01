@@ -63,14 +63,26 @@
 
 <script type="text/x-red" data-help-name="tjbot-analyze-tone">
   <p>Make TJBot analyze the tone</p>
-  <p>The text to analyze should be passed in on <b>msg.payload</b>.</p>
-  <p>The response can be narrowed down to one of the three categories by setting <b>msg.mode</b>:</p>
-  <ul>
-    <li><i>emotion</i> - emotions</li>
-    <li><i>language</i> - language scores</li>
-    <li><i>social</i> - social scores</li>
-    <li><i>all</i> (or not set) - all scores</li>
-  </ul>
-  <p>The service response will be returned on <b>msg.response</b>.</p>
-  <p><b>Note:</b> This node requires that the Watson Tone Analyzer credentials are set in the TJBot configuration.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">mode
+      <span class="property-type">string</span>
+    </dt>
+    <dd>the type of analysis to return: either all, emotion, language, or social</dd>
+    <dt>payload
+      <span class="property-type">string</span>
+    </dt>
+    <dd>the text to analyze with Watson Tone Analyzer</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>response <span class="property-type">object</span></dt>
+    <dd>the tone categories and scores</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>The response can be narrowed down to one of the three categories by setting <code>msg.mode</code>.</p>
+  <p>Note: This node requires that the Watson Tone Analyzer credentials are set in the TJBot configuration.</p>
 </script>

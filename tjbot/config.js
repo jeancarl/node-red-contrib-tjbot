@@ -27,7 +27,7 @@ module.exports = function(RED) {
     this.botGender = config.botGender;
     this.name = config.name;
     this.services = {};
-    this.hardware = ["led", "servo"];
+    this.hardware = [];
     this.name = config.name;
 
     this.configuration = {
@@ -44,6 +44,14 @@ module.exports = function(RED) {
     this.configuration.speak = {
         language: config.speak
     };
+
+    if(config.hasServo) {
+      this.hardware.push("servo");
+    }
+
+    if(config.hasLED) {
+      this.hardware.push("led");
+    }
 
     if(this.credentials.taUsername && this.credentials.taUsername.length && this.credentials.taPassword && this.credentials.taPassword.length) {
       this.services.tone_analyzer = {
@@ -86,7 +94,6 @@ module.exports = function(RED) {
       this.services.speech_to_text = {
         username: this.credentials.sttUsername,
         password: this.credentials.sttPassword,
-
       };
 
       this.configuration.listen = {

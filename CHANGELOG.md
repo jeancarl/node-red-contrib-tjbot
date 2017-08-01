@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4
+* Updated help documentation to the new format recommended by Node-RED 0.17
+* Add width and height options for takepicture mode in see node
+* Add option for servo and LED to be enabled
+* Add shortcuts in TJBot config to IBM Bluemix catalog pages for each IBM Watson service
+
 ## 0.3
 * Add identify and is translatable options to translate node
 * Add pulse option for shine node

@@ -62,12 +62,16 @@
 
 <script type="text/x-red" data-help-name="tjbot-wave">
   <p>Make TJBot wave</p>
-  <p>Set the motion using <b>msg.motion</b> (case insensitive):</p>
-  <ul>
-    <li><i>wave</i> - Wave</li>
-    <li><i>armback</i> - Arm Back</li>
-    <li><i>raisearm</i> - Raise Arm</li>
-    <li><i>lowerarm</i> - Lower Arm</li>
-  </ul>
-  <p><b>Note:</b> This node requires that a servo is connected to the TJBot.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">motion
+      <span class="property-type">string</span>
+    </dt>
+    <dd>the motion the arm should make, or position to move to: wave, armback, raisearm, lowerarm</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>The motion (wave) or position of the arm (armback, lowerarm, and raisearm) can be set by <code>msg.motion</code> (case insensitive).</p>
+  <p>Note: This node requires that a servo is connected to the TJBot and that the option is check in the TJBot configuration.</p>
 </script>

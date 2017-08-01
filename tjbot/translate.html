@@ -105,9 +105,37 @@
 
 <script type="text/x-red" data-help-name="tjbot-translate">
   <p>Make TJBot translate text</p>
-  <p>Set <b>msg.mode</b> to <i>translate</i>, <i>identifyLanguage</i>, or <i>isTranslatable</i> (case-insensitive).</p>
-  <p>The text to be translated/identified should be passed in on <b>msg.payload</b>.</p>
-  <p>Set the source language and target language on <b>msg.srcLang</b> and <b>msg.targetLang</b>, respectively:</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">destLang
+      <span class="property-type">string</span>
+    </dt>
+    <dd>the target language of the text to be translated to</dd>
+    <dt class="optional">mode
+      <span class="property-type">string</span>
+    </dt>
+    <dd>either translate, identifyLanguage, or isTranslatable (case-insensitive)</dd>
+    <dt class="optional">payload
+      <span class="property-type">string</span>
+    </dt>
+    <dd>if mode is translate or identifyLanguage, the text to translate</dd>        
+    <dt class="optional">srcLang
+      <span class="property-type">string</span>
+    </dt>
+    <dd>the source language of the text to translate</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>response <span class="property-type">object | boolean</span></dt>
+    <dd>if mode is translate, returns the translation</dd>
+    <dd>if mode is isTranslatable, returns a boolean if the Watson Language Translator service has a model between the two languages</dd>
+    <dd>if mode is identifyLanguage, returns confidence scores for the available languages</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>Set the source language and target language on <code>msg.srcLang</code> and <code>msg.targetLang</code>, respectively:</p>
   <ul>
     <li><i>ar</i> - Arabic</li>
     <li><i>zh</i> - Chinese</li>
@@ -120,11 +148,5 @@
     <li><i>es</i> - Spanish</li>
     <li><i>pt</i> - Portuguese</li>
   </ul>
-  <p>The service response will be returned on <b>msg.response</b>. <b>msg.response</b> will be:</p>
-  <ul>
-    <li>the translation, if mode is <i>translate</i></li>
-    <li>a boolean, if mode is <i>isTranslatable</i></li>
-    <li>the confidence scores for the available languages, if mode is <i>identifyLanguage</i></li>
-  </ul>
-  <p><b>Note:</b> This node requires that the Watson Language Translator credentials are set in the TJBot configuration.</p>
+  <p>Note: This node requires that the Watson Language Translator credentials are set in the TJBot configuration.</p>
 </script>

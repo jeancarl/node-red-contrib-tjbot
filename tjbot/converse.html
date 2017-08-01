@@ -52,7 +52,21 @@
 
 <script type="text/x-red" data-help-name="tjbot-converse">
   <p>Make TJBot converse</p>
-  <p>The text to analyze should be passed in on <b>msg.payload</b>.</p>
-  <p>The service response will be returned on <b>msg.response</b>.</p>
-  <p><b>Note:</b> This node requires that the Watson Conversation credentials are set in the TJBot configuration.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>payload
+      <span class="property-type">string</span>
+    </dt>
+    <dd>specify the text to be analyzed with Watson Conversation</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>response <span class="property-type">object</span></dt>
+    <dd>the service response from Watson Conversation</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>Note: This node requires that the Watson Conversation credentials are set in the TJBot configuration.</p>
 </script>

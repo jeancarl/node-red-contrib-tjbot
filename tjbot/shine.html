@@ -261,7 +261,24 @@
 
 <script type="text/x-red" data-help-name="tjbot-shine">
   <p>Make TJBot shine it's LED</p>
-  <p>Set <b>msg.mode</b> to <i>pulse</i> or <i>shine</i>. If mode is pulse, set <b>msg.duration</b> to a value between <i>0.5</i> and <i>2</i>.</p>
-  <p>Programmatically set the LED color by setting <b>msg.color</b> to a valid HTML color. Set <b>msg.color</b> to <i>random</i> to choose a random color.</p>
-  <p><b>Note:</b> This node requires that a LED is connected to the TJBot.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">color
+      <span class="property-type">string</span>
+    </dt>
+    <dd>a valid HTML color. Set to random to choose a random color</dd>
+    <dt class="optional">duration
+      <span class="property-type">number</span>
+    </dt>
+    <dd>if mode is pulse, the length of time in seconds to pulse the light [0.5,2]</dd>
+    <dt class="optional">mode
+      <span class="property-type">string</span>
+    </dt>
+    <dd>either pulse or shine</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>Note: This node requires that a LED is connected to the TJBot and that the option is check in the TJBot configuration.</p>
+  <p>When mode is pulse, set the duration of the pulse <code>msg.duration</code></p>
 </script>

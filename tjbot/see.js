@@ -42,10 +42,15 @@ module.exports = function(RED) {
           });
         break;
         case "takephoto":
-          var flipImage = config.flipImage ? config.flipImage : false;
+          var width = msg.hasOwnProperty("width") ? msg.width : config.width;
+          var height = msg.hasOwnProperty("height") ? msg.height : config.height;
+          var verticalFlip = msg.hasOwnProperty("verticalFlip") ? msg.verticalFlip : config.verticalFlip;
+          var horizontalFlip = msg.hasOwnProperty("horizontalFlip") ? msg.horizontalFlip : config.horizontalFlip;
 
-          tj.bots[config.botId].configuration.see.camera.verticalFlip = flipImage;
-          tj.bots[config.botId].configuration.see.camera.horizontalFlip = flipImage;
+          tj.bots[config.botId].configuration.see.camera.width = width;
+          tj.bots[config.botId].configuration.see.camera.height = height;
+          tj.bots[config.botId].configuration.see.camera.verticalFlip = verticalFlip;
+          tj.bots[config.botId].configuration.see.camera.horizontalFlip = horizontalFlip;
 
           tj.bots[config.botId].takePhoto().then(function(filePath) {
             msg.filename = filePath;

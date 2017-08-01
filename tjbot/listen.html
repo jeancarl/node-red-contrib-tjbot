@@ -52,13 +52,21 @@
 
 <script type="text/x-red" data-help-name="tjbot-listen">
   <p>Make TJBot listen</p>
-  <p>The text will be returned on <b>msg.payload</b>.</p>
-  <p>To begin listening set <b>msg.mode</b> to:</p>
-  <ul>
-    <li><i>start</i> - start listening</li>
-    <li><i>resume</i> - resume listening</li>
-    <li><i>pause</i> - pause listening</li>
-    <li><i>stop</i> - stop listening</li>
-  </ul>
-  <p><b>Note:</b> This node requires a microphone attached to the Raspberry Pi. Also, if one bot contains multiple listening nodes, each will start/stop/pause/resume just their own node.</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt class="optional">mode
+      <span class="property-type">string</span>
+    </dt>
+    <dd>either start, resume, pause, or stop to control microphone</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload <span class="property-type">string</span></dt>
+    <dd>the text that was heard by the microphone and transcribed</dd>
+  </dl>
+
+  <h3>Details</h3>
+  <p>Note: This node requires a microphone attached to the Raspberry Pi. Also, if one bot contains multiple listening nodes, each will start/stop/pause/resume just their own node.</p>
 </script>
