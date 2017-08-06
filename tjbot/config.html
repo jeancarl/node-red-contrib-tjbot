@@ -28,7 +28,8 @@
       listen: {value: ""},
       speak: {value: ""},
       hasLED: {value:false},
-      hasServo: {value:false}
+      hasServo: {value:false},
+      speakerDeviceId: {value:"plughw:0,0"}
     },
     credentials: {
       taUsername: {type:"text"},
@@ -144,6 +145,10 @@
   <div class="form-row">
     <label for="node-config-input-ttsPassword"><i class="fa fa-key"></i> Password:</label>
     <input type="password" id="node-config-input-ttsPassword" placeholder="Text to Speech Password">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-speakerDeviceId"><i class="fa fa-bullhorn"></i> Speaker Device ID:</label>
+    <input type="text" id="node-config-input-speakerDeviceId" placeholder="Speaker Device ID">
   </div>
   <div class="form-row">
     <b>Speech to Text</b> <a href="https://ibm.biz/catalog-speech-to-text" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>

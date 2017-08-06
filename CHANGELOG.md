@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5
+* Add Speaker Device ID to support USB speaker
+* Fix hardcoded language values in configuration
+
 ## 0.4
 * Updated help documentation to the new format recommended by Node-RED 0.17
 * Add width and height options for takepicture mode in see node

@@ -37,14 +37,6 @@ module.exports = function(RED) {
       }
     };
 
-    this.configuration.listen = {
-        language: config.listen
-    };
-
-    this.configuration.speak = {
-        language: config.speak
-    };
-
     if(config.hasServo) {
       this.hardware.push("servo");
     }
@@ -84,7 +76,8 @@ module.exports = function(RED) {
       };
 
       this.configuration.speak = {
-        language: "en-US"
+        language: config.speak,
+        speakerDeviceId: config.speakerDeviceId
       };
 
       this.hardware.push("speaker");
@@ -97,7 +90,7 @@ module.exports = function(RED) {
       };
 
       this.configuration.listen = {
-        language: "en-US"
+        language: config.listen
       };
 
       this.hardware.push("microphone");
