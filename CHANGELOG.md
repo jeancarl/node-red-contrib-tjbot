@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.5.1
+* Fix bug that speak node in play mode didn't use configuration value for file field
+
 ## 0.5
 * Add Speaker Device ID to support USB speaker
 * Fix hardcoded language values in configuration

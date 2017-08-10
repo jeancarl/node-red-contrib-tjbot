@@ -37,8 +37,10 @@ module.exports = function(RED) {
           });
         break;
         case "play":
+          var filename = msg.payload||config.payload;
+
           this.status({fill:"green", shape:"dot", text:"playing"});
-          tj.bots[config.botId].play(msg.payload).then(function() {
+          tj.bots[config.botId].play(filename).then(function() {
             node.send(msg);
             node.status({});
           });
