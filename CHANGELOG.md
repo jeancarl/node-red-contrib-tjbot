@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.6
+* Add Camera, Speaker, Microphone options in the TJBot configuration
+
 ## 0.5.1
 * Fix bug that speak node in play mode didn't use configuration value for file field
 

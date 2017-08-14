@@ -45,6 +45,18 @@ module.exports = function(RED) {
       this.hardware.push("led");
     }
 
+    if(config.hasSpeaker) {
+      this.hardware.push("speaker");
+    }
+
+    if(config.hasMicrophone) {
+      this.hardware.push("microphone");
+    }
+
+    if(config.hasCamera) {
+      this.hardware.push("camera");
+    }
+
     if(this.credentials.taUsername && this.credentials.taUsername.length && this.credentials.taPassword && this.credentials.taPassword.length) {
       this.services.tone_analyzer = {
         username: this.credentials.taUsername,
@@ -74,14 +86,12 @@ module.exports = function(RED) {
         username: this.credentials.ttsUsername,
         password: this.credentials.ttsPassword
       };
-
-      this.configuration.speak = {
-        language: config.speak,
-        speakerDeviceId: config.speakerDeviceId
-      };
-
-      this.hardware.push("speaker");
     }
+
+    this.configuration.speak = {
+      language: config.speak,
+      speakerDeviceId: config.speakerDeviceId
+    };
 
     if(this.credentials.sttUsername && this.credentials.sttUsername.length && this.credentials.sttPassword && this.credentials.sttPassword.length) {
       this.services.speech_to_text = {
@@ -92,15 +102,12 @@ module.exports = function(RED) {
       this.configuration.listen = {
         language: config.listen
       };
-
-      this.hardware.push("microphone");
     }
 
     if(this.credentials.vrApiKey && this.credentials.vrApiKey.length) {
       this.services.visual_recognition = {
         api_key: this.credentials.vrApiKey
       };
-      this.hardware.push("camera");
     }
 
     tj.bots[this.id] = new TJBot(this.hardware, this.configuration, this.services);

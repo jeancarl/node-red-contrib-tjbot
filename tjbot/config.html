@@ -27,8 +27,11 @@
       name: {value: ""},
       listen: {value: ""},
       speak: {value: ""},
-      hasLED: {value:false},
       hasServo: {value:false},
+      hasLED: {value:false},
+      hasSpeaker: {value:false},
+      hasMicrophone: {value:false},
+      hasCamera: {value:false},
       speakerDeviceId: {value:"plughw:0,0"}
     },
     credentials: {
@@ -89,15 +92,19 @@
   </div>
   <div class="form-row">
     <label><i class="fa fa-toggle-on"></i> Has</label>
-    <input type="checkbox" id="node-config-input-hasServo" placeholder="" style="display: inline-block; width: auto; vertical-align: top;">
-    <label for="node-config-input-hasServo">Servo</label>
-    <input type="checkbox" id="node-config-input-hasLED" placeholder="" style="display: inline-block; width: auto; vertical-align: top;">
-    <label for="node-config-input-hasLED">LED</label>
+    <label for="node-config-input-hasServo"><input type="checkbox" id="node-config-input-hasServo" placeholder="" style="display: inline-block; width: auto; vertical-align: top;"> Servo</label>
+    <label for="node-config-input-hasLED"><input type="checkbox" id="node-config-input-hasLED" placeholder="" style="display: inline-block; width: auto; vertical-align: top;"> LED</label>
+    <label for="node-config-input-hasCamera"><input type="checkbox" id="node-config-input-hasCamera" placeholder="" style="display: inline-block; width: auto; vertical-align: top;"> Camera</label>
+  </div>
+  <div class="form-row">
+    <label></label>
+    <label for="node-config-input-hasMicrophone"><input type="checkbox" id="node-config-input-hasMicrophone" placeholder="" style="display: inline-block; width: auto; vertical-align: top;"> Microphone</label>
+    <label for="node-config-input-hasSpeaker"><input type="checkbox" id="node-config-input-hasSpeaker" placeholder="" style="display: inline-block; width: auto; vertical-align: top;"> Speaker</label>
   </div>
   <div class="form-row">
     <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-config-input-name" placeholder="Name">
-  </div>
+  </div>  
   <div class="form-row">
     <b>Tone Analyzer</b> <a href="http://ibm.biz/catalog-tone-analyzer" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
   </div>
