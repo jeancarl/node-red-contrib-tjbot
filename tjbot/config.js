@@ -74,10 +74,9 @@ module.exports = function(RED) {
       };
     }
 
-    if(this.credentials.ltUsername && this.credentials.ltUsername.length && this.credentials.ltPassword && this.credentials.ltPassword.length) {
+    if(this.credentials.ltApikey && this.credentials.ltApikey.length) {
       this.services.language_translator = {
-        username: this.credentials.ltUsername,
-        password: this.credentials.ltPassword
+        apikey: this.credentials.ltApikey,
       };
     }
 
@@ -119,8 +118,7 @@ module.exports = function(RED) {
     cUsername: {type:"text"},
     cPassword: {type:"password"},
     cWorkspaceId: {type:"text"},
-    ltUsername: {type:"text"},
-    ltPassword: {type:"password"},
+    ltApikey: {type:"password"},
     ttsUsername: {type:"text"},
     ttsPassword: {type:"password"},
     sttUsername: {type:"text"},
