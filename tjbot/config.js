@@ -1,5 +1,5 @@
 /***************************************************************************
-* Copyright 2017 IBM
+* Copyright 2018 IBM
 *
 *   TJBot Nodes for Node-RED
 *
@@ -100,7 +100,8 @@ module.exports = function(RED) {
       };
 
       this.configuration.listen = {
-        language: config.listen
+        language: config.listen,
+        microphoneDeviceId: config.microphoneDeviceId        
       };
     }
 
@@ -109,6 +110,12 @@ module.exports = function(RED) {
         api_key: this.credentials.vrApiKey
       };
     }
+
+    if(this.credentials.vrIAMApiKey && this.credentials.vrIAMApiKey.length) {
+      this.services.visual_recognition = {
+        iam_apikey: this.credentials.vrIAMApiKey
+      };
+    }    
 
     tj.bots[this.id] = new TJBot(this.hardware, this.configuration, this.services);
   }
@@ -125,6 +132,7 @@ module.exports = function(RED) {
     ttsPassword: {type:"password"},
     sttUsername: {type:"text"},
     sttPassword: {type:"password"},
-    vrApiKey: {type:"password"}
+    vrApiKey: {type:"password"},
+    vrIAMApiKey: {type:"password"}
   }});
 }

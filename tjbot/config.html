@@ -32,7 +32,8 @@
       hasSpeaker: {value:false},
       hasMicrophone: {value:false},
       hasCamera: {value:false},
-      speakerDeviceId: {value:"plughw:0,0"}
+      speakerDeviceId: {value:"plughw:0,0"},
+      microphoneDeviceId: {value:"plughw:1,0"}
     },
     credentials: {
       taUsername: {type:"text"},
@@ -46,7 +47,8 @@
       ttsPassword: {type:"password"},
       sttUsername: {type:"text"},
       sttPassword: {type:"password"},
-      vrApiKey: {type:"password"}
+      vrApiKey: {type:"password"},
+      vrIAMApiKey: {type:"password"}
     },
     label: function() {
       return this.botName||this.name||"TJBot";
@@ -106,7 +108,7 @@
     <input type="text" id="node-config-input-name" placeholder="Name">
   </div>  
   <div class="form-row">
-    <b>Tone Analyzer</b> <a href="http://ibm.biz/catalog-tone-analyzer" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <b>Tone Analyzer</b> <a href="http://ibm.biz/catalog-tone-analyzer" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-taUsername"><i class="fa fa-user"></i> Username:</label>
@@ -117,22 +119,22 @@
     <input type="password" id="node-config-input-taPassword" placeholder="Tone Analyzer Password">
   </div>
   <div class="form-row">
-    <b>Conversation</b> <a href="https://ibm.biz/catalog-conversation" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <b>Watson Assistant (formerly Conversation)</b> <a href="https://ibm.biz/catalog-assistant" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-cUsername"><i class="fa fa-user"></i> Username:</label>
-    <input type="text" id="node-config-input-cUsername" placeholder="Conversation Username">
+    <input type="text" id="node-config-input-cUsername" placeholder="Watson Assistant Username">
   </div>
   <div class="form-row">
     <label for="node-config-input-cPassword"><i class="fa fa-key"></i> Password:</label>
-    <input type="password" id="node-config-input-cPassword" placeholder="Conversation Password">
+    <input type="password" id="node-config-input-cPassword" placeholder="Watson Assistant Password">
   </div>
   <div class="form-row">
     <label for="node-config-input-cWorkspaceId"><i class="fa fa-tag"></i> Workspace ID:</label>
-    <input type="text" id="node-config-input-cWorkspaceId" placeholder="Conversation Workspace ID">
+    <input type="text" id="node-config-input-cWorkspaceId" placeholder="Watson Assistant Workspace ID">
   </div>
   <div class="form-row">
-    <b>Language Translator</b>  <a href="https://ibm.biz/catalog-language-translator" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <b>Language Translator</b>  <a href="https://ibm.biz/catalog-language-translator" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-ltUsername"><i class="fa fa-user"></i> Username:</label>
@@ -143,7 +145,7 @@
     <input type="password" id="node-config-input-ltPassword" placeholder="Language Translator Password">
   </div>
   <div class="form-row">
-    <b>Text to Speech</b> <a href="https://ibm.biz/catalog-text-to-speech" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <b>Text to Speech</b> <a href="https://ibm.biz/catalog-text-to-speech" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-ttsUsername"><i class="fa fa-user"></i> Username:</label>
@@ -158,7 +160,7 @@
     <input type="text" id="node-config-input-speakerDeviceId" placeholder="Speaker Device ID">
   </div>
   <div class="form-row">
-    <b>Speech to Text</b> <a href="https://ibm.biz/catalog-speech-to-text" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <b>Speech to Text</b> <a href="https://ibm.biz/catalog-speech-to-text" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-sttUsername"><i class="fa fa-user"></i> Username:</label>
@@ -169,10 +171,18 @@
     <input type="password" id="node-config-input-sttPassword" placeholder="Speech to Text Password">
   </div>
   <div class="form-row">
-    <b>Visual Recognition</b> <a href="https://ibm.biz/catalog-visual-recognition" target="_blank" title="Open IBM Bluemix Catalog"><i class="fa fa-external-link"></i></a>
+    <label for="node-config-input-microphoneDeviceId"><i class="fa fa-bullhorn"></i> Microphone Device ID:</label>
+    <input type="text" id="node-config-input-microphoneDeviceId" placeholder="Microphone Device ID">
+  </div>  
+  <div class="form-row">
+    <b>Visual Recognition</b> <a href="https://ibm.biz/catalog-visual-recognition" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-vrApiKey"><i class="fa fa-key"></i> API Key:</label>
     <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key">
   </div>
+  <div class="form-row">
+    <label for="node-config-input-vrIAMApiKey"><i class="fa fa-key"></i> IAM API Key:</label>
+    <input type="password" id="node-config-input-vrIAMApiKey" placeholder="Visual Recognition IAM API Key">
+  </div>  
 </script>
