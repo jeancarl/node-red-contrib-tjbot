@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.7
+* Removed old Visual Recognition API key support. Support for IAM API key added.
+
 ## 0.6
 * Add Camera, Speaker, Microphone options in the TJBot configuration
 

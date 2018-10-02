@@ -1,6 +1,6 @@
 <!--
 #***************************************************************************
-# Copyright 2017 IBM
+# Copyright 2018 IBM
 #
 #   TJBot Nodes for Node-RED
 #
@@ -47,7 +47,6 @@
       ttsPassword: {type:"password"},
       sttUsername: {type:"text"},
       sttPassword: {type:"password"},
-      vrApiKey: {type:"password"},
       vrIAMApiKey: {type:"password"}
     },
     label: function() {
@@ -176,10 +175,6 @@
   </div>  
   <div class="form-row">
     <b>Visual Recognition</b> <a href="https://ibm.biz/catalog-visual-recognition" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
-  </div>
-  <div class="form-row">
-    <label for="node-config-input-vrApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key">
   </div>
   <div class="form-row">
     <label for="node-config-input-vrIAMApiKey"><i class="fa fa-key"></i> IAM API Key:</label>

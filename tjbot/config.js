@@ -105,12 +105,6 @@ module.exports = function(RED) {
       };
     }
 
-    if(this.credentials.vrApiKey && this.credentials.vrApiKey.length) {
-      this.services.visual_recognition = {
-        api_key: this.credentials.vrApiKey
-      };
-    }
-
     if(this.credentials.vrIAMApiKey && this.credentials.vrIAMApiKey.length) {
       this.services.visual_recognition = {
         iam_apikey: this.credentials.vrIAMApiKey
