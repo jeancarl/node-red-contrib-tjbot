@@ -74,10 +74,9 @@ module.exports = function(RED) {
       };
     }
 
-    if(this.credentials.ltUsername && this.credentials.ltUsername.length && this.credentials.ltPassword && this.credentials.ltPassword.length) {
+    if(this.credentials.ltApiKey && this.credentials.ltApiKey.length) {
       this.services.language_translator = {
-        username: this.credentials.ltUsername,
-        password: this.credentials.ltPassword
+        apikey: this.credentials.ltApiKey
       };
     }
 
@@ -105,9 +104,9 @@ module.exports = function(RED) {
       };
     }
 
-    if(this.credentials.vrIAMApiKey && this.credentials.vrIAMApiKey.length) {
+    if(this.credentials.vrApiKey && this.credentials.vrApiKey.length) {
       this.services.visual_recognition = {
-        iam_apikey: this.credentials.vrIAMApiKey
+        apikey: this.credentials.vrApiKey
       };
     }    
 
@@ -120,13 +119,11 @@ module.exports = function(RED) {
     cUsername: {type:"text"},
     cPassword: {type:"password"},
     cWorkspaceId: {type:"text"},
-    ltUsername: {type:"text"},
-    ltPassword: {type:"password"},
+    ltApiKey: {type:"password"},
     ttsUsername: {type:"text"},
     ttsPassword: {type:"password"},
     sttUsername: {type:"text"},
     sttPassword: {type:"password"},
-    vrApiKey: {type:"password"},
-    vrIAMApiKey: {type:"password"}
+    vrApiKey: {type:"password"}
   }});
 }
