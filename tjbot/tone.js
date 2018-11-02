@@ -26,24 +26,8 @@ module.exports = function(RED) {
     var node = this;
 
     node.on("input", function(msg) {
-      var mode = msg.mode||config.tones;
-      
       tj.bots[config.botId].analyzeTone(msg.payload).then(function(response) {
-        switch(mode.toLowerCase()) {
-          case "emotion":
-            msg.response = response.document_tone.tone_categories[0];
-          break;
-          case "language":
-            msg.response = response.document_tone.tone_categories[1];
-          break;
-          case "social":
-            msg.response = response.document_tone.tone_categories[2];
-          break;
-          case "all":
-          default:
-            msg.response = response;
-          break;
-        }
+        msg.response = response;
 
         node.send(msg);
       });

@@ -57,19 +57,16 @@ module.exports = function(RED) {
       this.hardware.push("camera");
     }
 
-    if(this.credentials.taUsername && this.credentials.taUsername.length && this.credentials.taPassword && this.credentials.taPassword.length) {
+    if(this.credentials.taApiKey && this.credentials.taApiKey.length) {
       this.services.tone_analyzer = {
-        username: this.credentials.taUsername,
-        password: this.credentials.taPassword
+        apikey: this.credentials.taApiKey
       };
     }
 
-    if(this.credentials.cUsername && this.credentials.cUsername.length &&
-      this.credentials.cPassword && this.credentials.cPassword.length &&
+    if(this.credentials.cApiKey && this.credentials.cApiKey.length &&
       this.credentials.cWorkspaceId && this.credentials.cWorkspaceId.length) {
       this.services.conversation = {
-        username: this.credentials.cUsername,
-        password: this.credentials.cPassword,
+        apikey: this.credentials.cApiKey,
         workspaceId: this.credentials.cWorkspaceId,
       };
     }
@@ -80,10 +77,9 @@ module.exports = function(RED) {
       };
     }
 
-    if(this.credentials.ttsUsername && this.credentials.ttsUsername.length && this.credentials.ttsPassword && this.credentials.ttsPassword.length) {
+    if(this.credentials.ttsApiKey && this.credentials.ttsApiKey.length) {
       this.services.text_to_speech = {
-        username: this.credentials.ttsUsername,
-        password: this.credentials.ttsPassword
+        apikey: this.credentials.ttsApiKey
       };
     }
 
@@ -92,10 +88,9 @@ module.exports = function(RED) {
       speakerDeviceId: config.speakerDeviceId
     };
 
-    if(this.credentials.sttUsername && this.credentials.sttUsername.length && this.credentials.sttPassword && this.credentials.sttPassword.length) {
+    if(this.credentials.sttApiKey && this.credentials.sttApiKey.length) {
       this.services.speech_to_text = {
-        username: this.credentials.sttUsername,
-        password: this.credentials.sttPassword,
+        apikey: this.credentials.sttApiKey
       };
 
       this.configuration.listen = {
@@ -114,16 +109,12 @@ module.exports = function(RED) {
   }
 
   RED.nodes.registerType("tjbot-config", TJBotNodeConfig, {credentials: {
-    taUsername: {type:"text"},
-    taPassword: {type:"password"},
-    cUsername: {type:"text"},
-    cPassword: {type:"password"},
+    taApiKey: {type:"password"},
+    cApiKey: {type:"password"},
     cWorkspaceId: {type:"text"},
     ltApiKey: {type:"password"},
-    ttsUsername: {type:"text"},
-    ttsPassword: {type:"password"},
-    sttUsername: {type:"text"},
-    sttPassword: {type:"password"},
+    ttsApiKey: {type:"password"},
+    sttApiKey: {type:"password"},
     vrApiKey: {type:"password"}
   }});
 }

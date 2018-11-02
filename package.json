@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-tjbot",
-  "version": "0.7.0",
-  "description": "Node-RED Nodes for the TJ Bot",
+  "version": "0.8.0",
+  "description": "Node-RED Nodes for the TJBot",
   "main": "tjbot/tjbot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "tjbot": "^1.4.0"
+    "tjbot": "^1.5.1"
   },
   "author": "JeanCarl Bisson <jbisson@us.ibm.com> (http://jeancarlbisson.com)",
   "license": "ISC",

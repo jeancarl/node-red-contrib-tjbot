@@ -25,7 +25,6 @@
     color: "#D2B48C",
     defaults: {
       botId: {type: "tjbot-config"},
-      tones: {value: "all"},
       name: {value: ""}
     },
     inputs: 1,
@@ -45,16 +44,6 @@
     <select id="node-input-botId">
     </select>
   </div>
-  <div class="form-row" >
-    <label for="node-input-tones"><i class="fa fa-comments-o"></i> Tones</label>
-    <select type="text" id="node-input-tones">
-        <option value="all">All</option>
-        <option value="emotion">Emotion</option>
-        <option value="language">Language</option>
-        <option value="social">Social</option>
-        <option value="msg.mode">-- set msg.mode --</option>
-    </select>
-  </div>
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
@@ -66,10 +55,6 @@
 
   <h3>Inputs</h3>
   <dl class="message-properties">
-    <dt class="optional">mode
-      <span class="property-type">string</span>
-    </dt>
-    <dd>the type of analysis to return: either all, emotion, language, or social</dd>
     <dt>payload
       <span class="property-type">string</span>
     </dt>
@@ -83,6 +68,5 @@
   </dl>
 
   <h3>Details</h3>
-  <p>The response can be narrowed down to one of the three categories by setting <code>msg.mode</code>.</p>
   <p>Note: This node requires that the Watson Tone Analyzer credentials are set in the TJBot configuration.</p>
 </script>

@@ -1,7 +1,14 @@
 # Change Log
 
+## 0.8
+* Converted all Watson services to use IAM API keys
+* Removed deprecated language and social tones from analyze tone node 
+* Add additional language support to translate node
+* Add additional language support to listen node
+
 ## 0.7
-* Removed old Visual Recognition API key support. Support for IAM API key added.
+* Removed old Visual Recognition API key support. Support for IAM API key added
+* Add support for custom Microphone Device ID
 
 ## 0.6
 * Add Camera, Speaker, Microphone options in the TJBot configuration
