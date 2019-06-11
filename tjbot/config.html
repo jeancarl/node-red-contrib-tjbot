@@ -33,7 +33,13 @@
       hasMicrophone: {value:false},
       hasCamera: {value:false},
       speakerDeviceId: {value:"plughw:0,0"},
-      microphoneDeviceId: {value:"plughw:1,0"}
+      microphoneDeviceId: {value:"plughw:1,0"},
+      aUrl: {value: "https://gateway.watsonplatform.net/assistant/api"},
+      taUrl: {value: "https://gateway.watsonplatform.net/tone-analyzer/api"},
+      ltUrl: {value: "https://gateway.watsonplatform.net/language-translator/api"},
+      sttUrl: {value: "https://stream.watsonplatform.net/speech-to-text/api"},
+      ttsUrl: {value: "https://stream.watsonplatform.net/text-to-speech/api"},
+      vrUrl: {value: "https://gateway.watsonplatform.net/visual-recognition/api"}
     },
     credentials: {
       taApiKey: {type:"password"},
@@ -108,25 +114,49 @@
   </div>
   <div class="form-row">
     <label for="node-config-input-cApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-cApiKey" placeholder="Watson Assistant API Key">
+    <select id="node-config-input-aUrl" style="width: 30%">
+        <option value="https://gateway.watsonplatform.net/assistant/api">Dallas</option>
+        <option value="https://gateway-fra.watsonplatform.net/assistant/api">Frankfurt</option>
+        <option value="https://gateway-lon.watsonplatform.net/assistant/api">London</option>
+        <option value="https://gateway-syd.watsonplatform.net/assistant/api">Sydney</option>
+        <option value="https://gateway-tok.watsonplatform.net/assistant/api">Tokyo</option>
+        <option value="https://gateway-wdc.watsonplatform.net/assistant/api">Washington DC</option>
+      </select> 
+    <input type="password" id="node-config-input-cApiKey" placeholder="Watson Assistant API Key" style="width: 40%">
   </div>
   <div class="form-row">
-    <label for="node-config-input-cWorkspaceId"><i class="fa fa-tag"></i> Workspace ID:</label>
-    <input type="text" id="node-config-input-cWorkspaceId" placeholder="Watson Assistant Workspace ID">
+    <label for="node-config-input-cWorkspaceId" style="width: 30%"><i class="fa fa-tag"></i> Workspace ID:</label>
+    <input type="text" id="node-config-input-cWorkspaceId" placeholder="Watson Assistant Workspace ID"  style="width: 60%">
   </div>
   <div class="form-row">
     <b>Language Translator</b> <a href="https://ibm.biz/catalog-language-translator" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-ltApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-ltApiKey" placeholder="Language Translator API Key">
+    <select id="node-config-input-ltUrl" style="width: 30%">
+      <option value="https://gateway.watsonplatform.net/language-translator/api">Dallas</option>
+      <option value="https://gateway-fra.watsonplatform.net/language-translator/api">Frankfurt</option>
+      <option value="https://gateway-lon.watsonplatform.net/language-translator/api">London</option>
+      <option value="https://gateway-syd.watsonplatform.net/language-translator/api">Sydney</option>
+      <option value="https://gateway-tok.watsonplatform.net/language-translator/api">Tokyo</option>
+      <option value="https://gateway-wdc.watsonplatform.net/language-translator/api">Washington DC</option>
+    </select> 
+    <input type="password" id="node-config-input-ltApiKey" placeholder="Language Translator API Key" style="width: 40%">
   </div>
   <div class="form-row">
     <b>Speech to Text</b> <a href="https://ibm.biz/catalog-speech-to-text" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-sttApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-sttApiKey" placeholder="Speech to Text API Key">
+      <select id="node-config-input-sttUrl" style="width: 30%" placeholder="Region">
+        <option value="https://stream.watsonplatform.net/speech-to-text/api">Dallas</option>
+        <option value="https://stream-fra.watsonplatform.net/speech-to-text/api">Frankfurt</option>
+        <option value="https://gateway-lon.watsonplatform.net/speech-to-text/api">London</option>
+        <option value="https://gateway-syd.watsonplatform.net/speech-to-text/api">Sydney</option>
+        <option value="https://gateway-tok.watsonplatform.net/speech-to-text/api">Tokyo</option>
+        <option value="https://gateway-wdc.watsonplatform.net/speech-to-text/api">Washington DC</option>
+      </select> 
+    <input type="password" id="node-config-input-sttApiKey" placeholder="Speech to Text API Key" style="width: 40%">
   </div>
   <div class="form-row">
     <label for="node-config-input-microphoneDeviceId"><i class="fa fa-bullhorn"></i> Microphone Device ID:</label>
@@ -137,7 +167,15 @@
   </div>
   <div class="form-row">
     <label for="node-config-input-ttsApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-ttsApiKey" placeholder="Text to Speech API Key">
+    <select id="node-config-input-ttsUrl" style="width: 30%">
+      <option value="https://stream.watsonplatform.net/text-to-speech/api">Dallas</option>
+      <option value="https://stream-fra.watsonplatform.net/text-to-speech/api">Frankfurt</option>
+      <option value="https://gateway-lon.watsonplatform.net/text-to-speech/api">London</option>
+      <option value="https://gateway-syd.watsonplatform.net/text-to-speech/api">Sydney</option>
+      <option value="https://gateway-tok.watsonplatform.net/text-to-speech/api">Tokyo</option>
+      <option value="https://gateway-wdc.watsonplatform.net/text-to-speech/api">Washington DC</option>
+    </select> 
+    <input type="password" id="node-config-input-ttsApiKey" placeholder="Text to Speech API Key" style="width: 40%">
   </div>
   <div class="form-row">
     <label for="node-config-input-speakerDeviceId"><i class="fa fa-bullhorn"></i> Speaker Device ID:</label>
@@ -148,13 +186,24 @@
   </div>
   <div class="form-row">
     <label for="node-config-input-taApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-taApiKey" placeholder="Tone Analyzer API Key">
+      <select id="node-config-input-taUrl" style="width: 30%">
+        <option value="https://gateway.watsonplatform.net/tone-analyzer/api">Dallas</option>
+        <option value="https://gateway-fra.watsonplatform.net/tone-analyzer/api">Frankfurt</option>
+        <option value="https://gateway-lon.watsonplatform.net/tone-analyzer/api">London</option>
+        <option value="https://gateway-syd.watsonplatform.net/tone-analyzer/api">Sydney</option>
+        <option value="https://gateway-tok.watsonplatform.net/tone-analyzer/api">Tokyo</option>
+        <option value="https://gateway-wdc.watsonplatform.net/tone-analyzer/api">Washington DC</option>
+      </select> 
+    <input type="password" id="node-config-input-taApiKey" placeholder="Tone Analyzer API Key" style="width: 40%">
   </div>  
   <div class="form-row">
     <b>Visual Recognition</b> <a href="https://ibm.biz/catalog-visual-recognition" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
     <label for="node-config-input-vrApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key">
+    <select id="node-config-input-vrUrl" style="width: 30%">
+      <option value="https://gateway.watsonplatform.net/visual-recognition/api">Dallas</option>
+    </select> 
+    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key" style="width: 40%">
   </div>  
 </script>
