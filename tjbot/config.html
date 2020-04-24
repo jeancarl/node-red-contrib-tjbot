@@ -113,16 +113,12 @@
     <b>Watson Assistant (formerly Conversation)</b> <a href="https://ibm.biz/catalog-assistant" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-cApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <select id="node-config-input-aUrl" style="width: 30%">
-        <option value="https://gateway.watsonplatform.net/assistant/api">Dallas</option>
-        <option value="https://gateway-fra.watsonplatform.net/assistant/api">Frankfurt</option>
-        <option value="https://gateway-lon.watsonplatform.net/assistant/api">London</option>
-        <option value="https://gateway-syd.watsonplatform.net/assistant/api">Sydney</option>
-        <option value="https://gateway-tok.watsonplatform.net/assistant/api">Tokyo</option>
-        <option value="https://gateway-wdc.watsonplatform.net/assistant/api">Washington DC</option>
-      </select> 
-    <input type="password" id="node-config-input-cApiKey" placeholder="Watson Assistant API Key" style="width: 40%">
+    <label for="node-config-input-cApiKey" style="width: 20%"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-cApiKey" placeholder="Watson Assistant API Key" style="width: 70%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-aUrl" style="width: 20%"><i class="fa fa-external-link"></i> URL:</label>
+    <input type="text" id="node-config-input-aUrl" placeholder="Watson Assistant API URL" style="width: 70%">
   </div>
   <div class="form-row">
     <label for="node-config-input-cWorkspaceId" style="width: 30%"><i class="fa fa-tag"></i> Workspace ID:</label>
@@ -132,78 +128,63 @@
     <b>Language Translator</b> <a href="https://ibm.biz/catalog-language-translator" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-ltApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <select id="node-config-input-ltUrl" style="width: 30%">
-      <option value="https://gateway.watsonplatform.net/language-translator/api">Dallas</option>
-      <option value="https://gateway-fra.watsonplatform.net/language-translator/api">Frankfurt</option>
-      <option value="https://gateway-lon.watsonplatform.net/language-translator/api">London</option>
-      <option value="https://gateway-syd.watsonplatform.net/language-translator/api">Sydney</option>
-      <option value="https://gateway-tok.watsonplatform.net/language-translator/api">Tokyo</option>
-      <option value="https://gateway-wdc.watsonplatform.net/language-translator/api">Washington DC</option>
-    </select> 
-    <input type="password" id="node-config-input-ltApiKey" placeholder="Language Translator API Key" style="width: 40%">
+    <label for="node-config-input-ltApiKey" style="width: 20%"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-ltApiKey" placeholder="Language Translator API Key" style="width: 70%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-ltUrl" style="width: 20%"><i class="fa fa-external-link"></i> URL:</label>
+    <input type="text" id="node-config-input-ltUrl" placeholder="Language Translator API URL" style="width: 70%">
   </div>
   <div class="form-row">
     <b>Speech to Text</b> <a href="https://ibm.biz/catalog-speech-to-text" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-sttApiKey"><i class="fa fa-key"></i> API Key:</label>
-      <select id="node-config-input-sttUrl" style="width: 30%" placeholder="Region">
-        <option value="https://stream.watsonplatform.net/speech-to-text/api">Dallas</option>
-        <option value="https://stream-fra.watsonplatform.net/speech-to-text/api">Frankfurt</option>
-        <option value="https://gateway-lon.watsonplatform.net/speech-to-text/api">London</option>
-        <option value="https://gateway-syd.watsonplatform.net/speech-to-text/api">Sydney</option>
-        <option value="https://gateway-tok.watsonplatform.net/speech-to-text/api">Tokyo</option>
-        <option value="https://gateway-wdc.watsonplatform.net/speech-to-text/api">Washington DC</option>
-      </select> 
-    <input type="password" id="node-config-input-sttApiKey" placeholder="Speech to Text API Key" style="width: 40%">
+    <label for="node-config-input-sttApiKey" style="width: 20%"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-sttApiKey" placeholder="Speech to Text API Key" style="width: 70%">
   </div>
   <div class="form-row">
-    <label for="node-config-input-microphoneDeviceId"><i class="fa fa-bullhorn"></i> Microphone Device ID:</label>
-    <input type="text" id="node-config-input-microphoneDeviceId" placeholder="Microphone Device ID">
+    <label for="node-config-input-sttUrl" style="width: 20%"><i class="fa fa-external-link"></i> URL:</label>
+    <input type="text" id="node-config-input-sttUrl" placeholder="Speech to Text API URL" style="width: 70%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-microphoneDeviceId" style="width: 40%"><i class="fa fa-bullhorn"></i> Microphone Device ID:</label>
+    <input type="text" id="node-config-input-microphoneDeviceId" placeholder="Microphone Device ID" style="width: 50%">
   </div>    
   <div class="form-row">
     <b>Text to Speech</b> <a href="https://ibm.biz/catalog-text-to-speech" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-ttsApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <select id="node-config-input-ttsUrl" style="width: 30%">
-      <option value="https://stream.watsonplatform.net/text-to-speech/api">Dallas</option>
-      <option value="https://stream-fra.watsonplatform.net/text-to-speech/api">Frankfurt</option>
-      <option value="https://gateway-lon.watsonplatform.net/text-to-speech/api">London</option>
-      <option value="https://gateway-syd.watsonplatform.net/text-to-speech/api">Sydney</option>
-      <option value="https://gateway-tok.watsonplatform.net/text-to-speech/api">Tokyo</option>
-      <option value="https://gateway-wdc.watsonplatform.net/text-to-speech/api">Washington DC</option>
-    </select> 
-    <input type="password" id="node-config-input-ttsApiKey" placeholder="Text to Speech API Key" style="width: 40%">
+    <label for="node-config-input-ttsApiKey" style="width: 20%"><i class="fa fa-external-link"></i> API Key:</label>
+    <input type="password" id="node-config-input-ttsApiKey" placeholder="Text to Speech API Key" style="width: 70%">
   </div>
   <div class="form-row">
-    <label for="node-config-input-speakerDeviceId"><i class="fa fa-bullhorn"></i> Speaker Device ID:</label>
-    <input type="text" id="node-config-input-speakerDeviceId" placeholder="Speaker Device ID">
+    <label for="node-config-input-ttsUrl" style="width: 20%"><i class="fa fa-key"></i> URL:</label>
+    <input type="text" id="node-config-input-ttsUrl" placeholder="Text to Speech API URL" style="width: 70%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-speakerDeviceId" style="width: 40%"><i class="fa fa-bullhorn"></i> Speaker Device ID:</label>
+    <input type="text" id="node-config-input-speakerDeviceId" placeholder="Speaker Device ID" style="width: 50%">
   </div>
   <div class="form-row">
     <b>Tone Analyzer</b> <a href="http://ibm.biz/catalog-tone-analyzer" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-taApiKey"><i class="fa fa-key"></i> API Key:</label>
-      <select id="node-config-input-taUrl" style="width: 30%">
-        <option value="https://gateway.watsonplatform.net/tone-analyzer/api">Dallas</option>
-        <option value="https://gateway-fra.watsonplatform.net/tone-analyzer/api">Frankfurt</option>
-        <option value="https://gateway-lon.watsonplatform.net/tone-analyzer/api">London</option>
-        <option value="https://gateway-syd.watsonplatform.net/tone-analyzer/api">Sydney</option>
-        <option value="https://gateway-tok.watsonplatform.net/tone-analyzer/api">Tokyo</option>
-        <option value="https://gateway-wdc.watsonplatform.net/tone-analyzer/api">Washington DC</option>
-      </select> 
-    <input type="password" id="node-config-input-taApiKey" placeholder="Tone Analyzer API Key" style="width: 40%">
+    <label for="node-config-input-taApiKey" style="width: 20%"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-taApiKey" placeholder="Tone Analyzer API Key" style="width: 60%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-taUrl" style="width: 20%"><i class="fa fa-external-link"></i> URL:</label>
+    <input type="text" id="node-config-input-taUrl" placeholder="Tone Analyzer API URL" style="width: 60%">
   </div>  
   <div class="form-row">
     <b>Visual Recognition</b> <a href="https://ibm.biz/catalog-visual-recognition" target="_blank" title="Open IBM Cloud Catalog"><i class="fa fa-external-link"></i></a>
   </div>
   <div class="form-row">
-    <label for="node-config-input-vrApiKey"><i class="fa fa-key"></i> API Key:</label>
-    <select id="node-config-input-vrUrl" style="width: 30%">
-      <option value="https://gateway.watsonplatform.net/visual-recognition/api">Dallas</option>
-    </select> 
-    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key" style="width: 40%">
+    <label for="node-config-input-vrApiKey" style="width: 20%"><i class="fa fa-key"></i> API Key:</label>
+    <input type="password" id="node-config-input-vrApiKey" placeholder="Visual Recognition API Key" style="width: 60%">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-vrUrl" style="width: 20%"><i class="fa fa-external-link"></i> URL:</label>
+    <input type="text" id="node-config-input-vrUrl" placeholder="Visual Recognition API URL" style="width: 60%">
   </div>  
 </script>
